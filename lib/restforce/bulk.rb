@@ -6,9 +6,10 @@ require "faraday_middleware"
 require "faraday_middleware/response_middleware"
 require "restforce"
 require "restforce/bulk/version"
-require "active_support/inflector"
 require "zip"
 require "securerandom"
+
+require_relative 'bulk/string_utils'
 
 module Restforce
   module Bulk
