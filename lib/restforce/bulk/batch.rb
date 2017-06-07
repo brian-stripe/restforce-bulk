@@ -17,7 +17,7 @@ module Restforce
         end
 
         def builder_class_for(content_type)
-          Restforce::Bulk::Builder.const_get(content_type.to_s.camelize)
+          Restforce::Bulk::Builder.const_get(Restforce::Bulk::StringUtils.camelize(content_type.to_s))
         end
       end
 

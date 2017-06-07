@@ -30,7 +30,7 @@ describe Restforce::Bulk::Result, mock_restforce: true do
         results.each do |result|
           xml.records('xsi:type' => 'sObject') do
             result.each do |key, value|
-              xml.send(key.to_s.camelize, value)
+              xml.send(Restforce::Bulk::StringUtils.camelize(key.to_s), value)
             end
 
             xml.type 'Account'
@@ -58,7 +58,7 @@ describe Restforce::Bulk::Result, mock_restforce: true do
 
       let(:raw_response_body) do
         CSV.generate do |csv|
-          csv << results.first.keys.map(&:to_s).map(&:camelize)
+          csv << results.first.keys.map(&:to_s).map {|s| Restforce::Bulk::StringUtils.camelize(s) }
 
           results.each do |result|
             csv << result.values

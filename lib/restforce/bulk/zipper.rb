@@ -25,7 +25,7 @@ module Restforce
       protected
 
       def builder
-        @builder ||= Restforce::Bulk::Builder.const_get(content_type.to_s.camelize).new('insert')
+        @builder ||= Restforce::Bulk::Builder.const_get(Restforce::Bulk::StringUtils.camelize(content_type.to_s)).new('insert')
       end
 
       def output_filename
