@@ -74,7 +74,7 @@ describe Restforce::Bulk::Job, mock_restforce: true do
       it "properly initializes content_type" do
         allow_restforce_request(:post, 'job', xml_data).and_return(restforce_response)
 
-        job = Restforce::Bulk::Job.create(operation, object_name, :csv)
+        job = Restforce::Bulk::Job.create(operation, object_name, content_type: :csv)
         expect(job.content_type).to eq(:csv)
       end
     end

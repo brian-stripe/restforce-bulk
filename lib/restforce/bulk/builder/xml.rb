@@ -8,10 +8,13 @@ module Restforce
           self.operation = operation
         end
 
-        def job(object_name, content_type)
+        def job(object_name, external_id_field_name, content_type)
           build_xml(:jobInfo) do |xml|
             xml.operation operation
             xml.object object_name
+            if external_id_field_name
+              xml.externalIdFieldName external_id_field_name
+            end
             xml.contentType content_type
           end
         end
